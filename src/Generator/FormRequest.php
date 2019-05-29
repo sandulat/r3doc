@@ -16,7 +16,7 @@ final class FormRequest
     protected $baseFormRequest;
 
     /**
-     * Form requests attributes
+     * Form requests attributes.
      *
      * @var \Sandulat\R3doc\Generator\RequestAttributeCollection
      */
