@@ -22,7 +22,7 @@ final class R3doc
     {
         $routesParser = new RoutesParser(
             config('r3doc.blacklistRoutes'),
-            config('r3doc.whitelistRoutes'),
+            config('r3doc.whitelistRoutes')
         );
 
         $this->routes = $routesParser->parse()->getRoutes();
