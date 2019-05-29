@@ -16,7 +16,7 @@ final class RequestAttributeCollection
     private $items = [];
 
     /**
-     * Add an item to the collection
+     * Add an item to the collection.
      *
      * @param \Sandulat\R3doc\Generator\RequestAttribute $attribute
      * @return self
@@ -92,7 +92,7 @@ final class RequestAttributeCollection
      */
     public function nestItemAttributes(RequestAttribute $item): void
     {
-        $scopeName = $item->getName() . '.*.';
+        $scopeName = $item->getName().'.*.';
 
         foreach ($this->getItems() as $comparedItem) {
             $shouldNest = Str::startsWith($comparedItem->getName(), $scopeName);

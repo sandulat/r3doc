@@ -44,7 +44,7 @@ final class RequestAttribute
     protected $type = 'string';
 
     /**
-     * Form requests attributes
+     * Form requests attributes.
      *
      * @var \Sandulat\R3doc\Generator\RequestAttributeCollection
      */
@@ -98,13 +98,13 @@ final class RequestAttribute
     public function parseEnumRules(array $rules): void
     {
         $inRule = 'in';
-        
+
         if (array_key_exists($inRule, $rules)) {
             $result = explode(',', $rules[$inRule]);
         }
 
         foreach ($rules as $rule) {
-            if (is_string($rule) && starts_with($rule, $inRule . ':') || $rule instanceof EnumRule) {
+            if (is_string($rule) && starts_with($rule, $inRule.':') || $rule instanceof EnumRule) {
                 $result = explode(',', explode(':', (string) $rule)[1]);
 
                 break;

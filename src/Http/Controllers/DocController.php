@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Sandulat\R3doc\Http\Controllers;
 
-use Illuminate\Routing\Controller;
 use Illuminate\View\View;
 use Sandulat\R3doc\R3doc;
+use Illuminate\Routing\Controller;
 
 final class DocController extends Controller
 {
