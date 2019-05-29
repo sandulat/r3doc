@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Sandulat\R3doc\Generator;
 
-use Illuminate\Support\Facades\Route as Router;
 use Illuminate\Routing\Route as BaseRoute;
+use Illuminate\Support\Facades\Route as Router;
 
 final class RoutesParser
 {

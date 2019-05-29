@@ -67,7 +67,7 @@ final class ReflectionAction
     {
         try {
             $typeClass = $parameter->getType()->getName();
-        
+
             $parameterInstance = new $typeClass();
 
             return ! is_subclass_of($parameterInstance, BaseFormRequest::class);
