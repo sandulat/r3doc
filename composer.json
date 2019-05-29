@@ -1,0 +1,51 @@
+{
+    "name": "sandulat/r3doc",
+    "description": "Automated Laravel API documentation generator.",
+    "keywords": [
+        "sandulat",
+        "r3doc"
+    ],
+    "homepage": "https://github.com/sandulat/r3doc",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Alexandru Stratulat",
+            "email": "alexanderstratulat97@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "illuminate/support": "5.8.*",
+        "laravel/framework": "~5.8.0|~5.9.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "3.8.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sandulat\\R3doc\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Sandulat\\R3doc\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Sandulat\\R3doc\\R3docServiceProvider"
+            ]
+        }
+    },
+    "prefer-stable": true
+}
