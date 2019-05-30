@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Sandulat\R3doc;
 
 use Sandulat\R3doc\Generator\RoutesParser;
+use Sandulat\R3doc\Generator\RequestAttributeCollection;
+use Sandulat\R3doc\Generator\RequestAttribute;
 
 final class R3doc
 {
@@ -29,12 +31,69 @@ final class R3doc
     }
 
     /**
-     * Get parsed routes.
+     * Get parsed routes in JSON format.
      *
-     * @var \Sandulat\R3doc\Generator\Route[]
+     * @return string
      */
-    public function getRoutes(): array
+    public function getJsonRoutes(): string
     {
-        return $this->routes;
+        $data = [];
+
+        foreach ($this->routes as $route) {
+            $item = [
+                'uri' => $route->getUri(),
+                'method' => $route->getMethod(),
+                'attributes' => $this->requestRecursiveAttributes($route->getAttributes()),
+            ];
+
+            $data[] = $item;
+        }
+
+        return json_encode($data);
+    }
+
+    /**
+     * Parse request attribute
+     *
+     * @param \Sandulat\R3doc\Generator\RequestAttribute $attribute
+     * @return array
+     */
+    public function parseRequestAttribute(RequestAttribute $attribute): array
+    {
+        return [
+            'name' => $attribute->getName(),
+            'required' => $attribute->getRequired(),
+            'nullable' => $attribute->getNullable(),
+            'enum' => $attribute->getEnum(),
+            'type' => $attribute->getType(),
+        ];
+    }
+    
+    /**
+     * Get request recursive attributes.
+     *
+     * @param \Sandulat\R3doc\Generator\RequestAttributeCollection $collection
+     * @return array
+     */
+    public function requestRecursiveAttributes(?RequestAttributeCollection $collection): array
+    {
+        if (!$collection) {
+            return [];
+        };
+
+        $parsedAttributes = [];
+
+        if ($attributes = $collection->getItems()) {
+            foreach ($attributes as $attribute) {
+                $nestedAttributes = $this->requestRecursiveAttributes($attribute->getAttributes());
+
+                $parsedAttributes[] = array_merge(
+                    $this->parseRequestAttribute($attribute),
+                    ['attributes' => $nestedAttributes]
+                );
+            }
+        }
+
+        return $parsedAttributes;
     }
 }

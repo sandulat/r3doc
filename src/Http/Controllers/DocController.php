@@ -17,8 +17,8 @@ final class DocController extends Controller
      */
     public function __invoke(R3doc $r3doc): View
     {
-        dd($r3doc);
-
-        return view('r3doc::app');
+        return view('r3doc::app')->with([
+            'routes' => $r3doc->getJsonRoutes(),
+        ]);
     }
 }

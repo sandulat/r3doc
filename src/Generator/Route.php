@@ -86,7 +86,7 @@ final class Route
     }
 
     /**
-     * Get route HTTP method.
+     * Get request attributes.
      *
      * @return \Sandulat\R3doc\Generator\RequestAttributeCollection|null
      */
