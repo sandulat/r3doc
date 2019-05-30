@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Sandulat\R3doc;
 
 use Sandulat\R3doc\Generator\RoutesParser;
-use Sandulat\R3doc\Generator\RequestAttributeCollection;
 use Sandulat\R3doc\Generator\RequestAttribute;
+use Sandulat\R3doc\Generator\RequestAttributeCollection;
 
 final class R3doc
 {
@@ -53,7 +53,7 @@ final class R3doc
     }
 
     /**
-     * Parse request attribute
+     * Parse request attribute.
      *
      * @param \Sandulat\R3doc\Generator\RequestAttribute $attribute
      * @return array
@@ -68,7 +68,7 @@ final class R3doc
             'type' => $attribute->getType(),
         ];
     }
-    
+
     /**
      * Get request recursive attributes.
      *
@@ -77,9 +77,9 @@ final class R3doc
      */
     public function requestRecursiveAttributes(?RequestAttributeCollection $collection): array
     {
-        if (!$collection) {
+        if (! $collection) {
             return [];
-        };
+        }
 
         $parsedAttributes = [];
 
